@@ -800,7 +800,7 @@
         }
       }
 
-      /* UPDATED: Warmer, softer greige background for light sections */
+      /* Warmer, softer greige background for light sections */
       .light {
         background: #e4e0dd;
         color: var(--black);
@@ -1034,12 +1034,10 @@
       }
 
       /*
-    ASYMMETRIC 2-COLUMN GRID (Matching Canva Reference Exactly):
-    - Left column is wider than right column (~60% : 40% -> 1.44fr : 1fr)
-    - Staggered horizontal divisions: Website is shorter than Graphic Design
-    - Top edges align at top; Bottom edges of AI Visual and Image Generation align at bottom
-    - Consistent 24px gap throughout
-  */
+        ASYMMETRIC 2-COLUMN GRID:
+        - Left column is wider than right column (1.44fr : 1fr)
+        - Consistent 24px gap throughout
+      */
       .work-grid {
         display: grid;
         grid-template-columns: 1.44fr 1fr;
@@ -1085,33 +1083,27 @@
       }
 
       /*
-    DESKTOP HEIGHTS (CANVA REFERENCE RATIOS):
-    Left Column:
-      1. Website (DevToolKit)     = 460px
-      Gap                         =  24px
-      3. AI Visual (AI Visual)    = 340px
-      Total Height                = 824px
-
-    Right Column:
-      2. Graphic Design (Brew)    = 530px  (Taller than Website by 70px)
-      Gap                         =  24px
-      4. Image Gen (Haven)        = 270px  (Shorter than AI Visual by 70px)
-      Total Height                = 824px
-
-    Bottom edges align perfectly: 460 + 24 + 340 = 530 + 24 + 270 = 824px.
-  */
+        DESKTOP HEIGHTS:
+        Left Column:  DevToolKit 400 + Veloura 360 + AI Visual 340 + 2 gaps (48) = 1148px
+        Right Column: Brew & Co. 640 + Haven 484 + 1 gap (24)                    = 1148px
+        Bottom edges of both columns align perfectly.
+      */
       @media (min-width: 901px) {
         .case[data-project="devtoolkit"] {
-          height: 460px;
+          height: 400px;
         }
-        .case[data-project="brew"] {
-          height: 530px;
+        .case[data-project="veloura"] {
+          height: 360px;
         }
         .case[data-project="ai_visual"] {
           height: 340px;
         }
+
+        .case[data-project="brew"] {
+          height: 640px;
+        }
         .case[data-project="haven"] {
-          height: 270px;
+          height: 484px;
         }
       }
 
@@ -1140,6 +1132,10 @@
         object-fit: cover;
         object-position: top center;
       }
+      .case[data-project="veloura"] .case-visual img {
+        object-fit: cover;
+        object-position: top center;
+      }
       .case[data-project="brew"] .case-visual {
         background: var(--black);
       }
@@ -1156,7 +1152,7 @@
         object-position: center;
       }
 
-      /* Specific tuning for the Digital Marketing cards to ensure the composite grid fits nicely */
+      /* Digital Marketing cards */
       .case[data-project="digital-social-strategy"] .case-visual img {
         object-fit: contain;
         padding: 10px;
@@ -1207,7 +1203,7 @@
         background: rgba(17, 17, 17, 0.25);
       }
 
-      /* Centered Typography Inside Every Box (Matching Canva Reference) */
+      /* Centered typography inside every box */
       .case-body {
         padding: 18px 20px 20px;
         text-align: center;
@@ -1342,7 +1338,6 @@
         letter-spacing: 0.1em;
       }
 
-      /* FIXED: Responsive Modal Visual */
       .modal-visual {
         border-radius: 2px;
         overflow: hidden;
@@ -1559,7 +1554,7 @@
         }
       }
 
-      /* Fixed Height for the Before/After Slider Only */
+      /* Before/After slider */
       .ba-slider {
         position: relative;
         height: 300px;
@@ -1578,8 +1573,6 @@
         position: absolute;
         inset: 0;
       }
-
-      /* FIXED: Changed to contain so the full image is visible in the slider */
       .ba-slider .ba-before img,
       .ba-slider .ba-after img {
         width: 100%;
@@ -1587,7 +1580,6 @@
         object-fit: contain;
         object-position: center;
       }
-
       .ba-slider .ba-after {
         clip-path: inset(0 0 0 50%);
       }
@@ -1852,7 +1844,7 @@
         margin-bottom: 44px;
       }
 
-      /* Contact Metadata (Information Index) */
+      /* Contact Metadata */
       .contact-meta {
         display: flex;
         flex-direction: column;
@@ -1931,7 +1923,7 @@
         }
       }
 
-      /* Social / Collaboration Buttons */
+      /* Social Buttons */
       .contact-socials {
         display: flex;
         flex-direction: column;
@@ -2491,14 +2483,13 @@
           <button class="filter-btn" data-filter="marketing">
             Digital Marketing
           </button>
-          <!-- NEW TAB -->
         </div>
 
-        <!-- Asymmetric 2-Column Showcase Area Matching Canva Reference -->
+        <!-- Asymmetric 2-Column Showcase Area -->
         <div class="work-grid">
           <!-- LEFT COLUMN (~60% width) -->
           <div class="work-col work-col-left">
-            <!-- 1. WEBSITE — TOP LEFT -->
+            <!-- 1. WEBSITE — TOP LEFT (DEVTOOLKIT) -->
             <article
               class="case reveal-scale"
               data-cat="web"
@@ -2519,6 +2510,34 @@
               <div class="case-body">
                 <span class="kicker">Web Development</span>
                 <h3>DevToolKit</h3>
+                <span class="view"
+                  >View Case Study <span class="arrow">→</span></span
+                >
+              </div>
+            </article>
+
+            <!-- 1.1 VELOURA — NEW CARD -->
+            <article
+              class="case reveal-scale"
+              data-cat="web"
+              data-project="veloura"
+              style="transition-delay: 0.15s"
+            >
+              <div class="case-visual">
+                <img
+                  src="./assets/veloura-landing-pg.png"
+                  onerror="
+                    this.onerror = null;
+                    this.src = '/assets/veloura-landing-pg.svg';
+                  "
+                  alt="Veloura E-Commerce Landing Page"
+                />
+                <div class="case-overlay"></div>
+                <div class="reveal-mask"></div>
+              </div>
+              <div class="case-body">
+                <span class="kicker">Web Development</span>
+                <h3>Veloura</h3>
                 <span class="view"
                   >View Case Study <span class="arrow">→</span></span
                 >
@@ -2645,7 +2664,7 @@
         </p>
 
         <div class="work-grid">
-          <!-- LEFT COLUMN (~60% width) -->
+          <!-- LEFT COLUMN -->
           <div class="work-col work-col-left">
             <!-- MARKETING PROJECT 1 — TOP LEFT -->
             <article
@@ -2654,7 +2673,6 @@
               data-project="digital-social-strategy"
             >
               <div class="case-visual">
-                <!-- UPDATED: New composite image -->
                 <img
                   src="./assets/social-media-strategy.png"
                   onerror="
@@ -2704,7 +2722,7 @@
             </article>
           </div>
 
-          <!-- RIGHT COLUMN (~40% width) -->
+          <!-- RIGHT COLUMN -->
           <div class="work-col work-col-right">
             <!-- MARKETING PROJECT 2 — TOP RIGHT -->
             <article
@@ -3487,14 +3505,14 @@
         const marketingSection = document.getElementById("marketing-work");
         const mainWorkSection = document.getElementById("work");
 
-        // Select the intro text elements inside #work
+        // Intro text elements inside #work
         const mainIntroElements = [
           mainWorkSection.querySelector(".eyebrow"),
           mainWorkSection.querySelector("h2.split"),
           mainWorkSection.querySelector("p.reveal-up"),
         ];
 
-        // Select the intro text elements inside #marketing-work
+        // Intro text elements inside #marketing-work
         const marketingIntroElements = [
           marketingSection.querySelector(".eyebrow"),
           marketingSection.querySelector("h2.split"),
@@ -3586,6 +3604,29 @@
           concept: false,
           actions: [],
         },
+        veloura: {
+          order: 9,
+          kicker: "Web Development",
+          name: "Veloura",
+          image: "./assets/veloura-landing-pg.png",
+          fallback: "/assets/veloura-landing-pg.svg",
+          overview:
+            "Veloura is a premium kids' fashion e-commerce website with a clean, modern storefront experience.",
+          role: "Solo developer and UI designer.",
+          challenge:
+            "Creating a premium, trustworthy shopping experience for parents while keeping the browsing flow simple and visually refined.",
+          solution:
+            "Built a responsive storefront with a polished landing page, product cards, and a consistent visual language across the site.",
+          tools: ["HTML", "CSS", "JavaScript", "Laravel", "PHP", "MySQL", "Blade"],
+          features: null,
+          gallery: false,
+          result:
+            "A refined, responsive e-commerce experience ready for real-world use.",
+                   concept: false,
+          liveUrl: "http://veloura-pk.great-site.net/",
+          liveLabel: "Click here to view the live website ↗",
+          actions: [],
+        },
         brew: {
           order: 2,
           kicker: "Graphic Design",
@@ -3657,7 +3698,7 @@
           order: 5,
           kicker: "Social Media Strategy",
           name: "Social Media Strategy",
-          image: "./assets/social-media-strategy.png", // UPDATED: New composite image
+          image: "./assets/social-media-strategy.png",
           fallback: "/assets/devtoolkit.svg",
           overview:
             "A strategic framework for building a consistent and engaging social media presence across key platforms.",
@@ -3891,10 +3932,13 @@
           note.className = "modal-placeholder-note";
 
           const link = document.createElement("a");
-          link.href = "https://zaraasad75-afk.github.io/DevToolkit/";
+          link.href =
+            project.liveUrl || "https://zaraasad75-afk.github.io/DevToolkit/";
           link.target = "_blank";
           link.rel = "noopener noreferrer";
-          link.textContent = "Click this link to view my project on GitHub ↗";
+          link.textContent =
+            project.liveLabel ||
+            "Click this link to view my project on GitHub ↗";
           link.style.cssText =
             "color: var(--tan); text-decoration: underline; cursor: pointer; display: inline-block; margin-top: 5px; font-style: normal;";
 
