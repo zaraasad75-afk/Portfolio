@@ -1085,7 +1085,7 @@
       /*
         DESKTOP HEIGHTS:
         Left Column:  DevToolKit 400 + Veloura 360 + AI Visual 340 + 2 gaps (48) = 1148px
-        Right Column: Brew & Co. 640 + Haven 484 + 1 gap (24)                    = 1148px
+        Right Column: Brew & Co. 440 + Canva 340 + Haven 320 + 2 gaps (48)       = 1148px
         Bottom edges of both columns align perfectly.
       */
       @media (min-width: 901px) {
@@ -1100,10 +1100,13 @@
         }
 
         .case[data-project="brew"] {
-          height: 640px;
+          height: 440px;
+        }
+        .case[data-project="canva_designs"] {
+          height: 340px;
         }
         .case[data-project="haven"] {
-          height: 484px;
+          height: 320px;
         }
       }
 
@@ -1133,6 +1136,10 @@
         object-position: top center;
       }
       .case[data-project="veloura"] .case-visual img {
+        object-fit: cover;
+        object-position: top center;
+      }
+      .case[data-project="canva_designs"] .case-visual img {
         object-fit: cover;
         object-position: top center;
       }
@@ -2603,6 +2610,30 @@
               </div>
             </article>
 
+            <!-- 2.1 CANVA DESIGNS — NEW CARD -->
+            <article
+              class="case reveal-right"
+              data-cat="design"
+              data-project="canva_designs"
+              style="transition-delay: 0.2s"
+            >
+              <div class="case-visual">
+                <img
+                  src="./assets/coffee-website-cannva.png"
+                  alt="Canva Design Work"
+                />
+                <div class="case-overlay"></div>
+                <div class="reveal-mask"></div>
+              </div>
+              <div class="case-body">
+                <span class="kicker">Graphic<br />Design</span>
+                <h3>Canva Designs</h3>
+                <span class="view"
+                  >View Gallery <span class="arrow">→</span></span
+                >
+              </div>
+            </article>
+
             <!-- 4. IMAGE GENERATION — BOTTOM RIGHT -->
             <article
               class="case reveal-right"
@@ -2955,16 +2986,15 @@
             <div class="meta-item">
               <span class="meta-label">Email</span>
               <span class="meta-value"
-                ><a href="mailto:your@email.com" class="meta-link"
+                ><a href="mailto:kanwalansari1990@email.com" class="meta-link"
                   >kanwalansari1990@email.com</a
                 ></span
               >
             </div>
-           
             <div class="meta-item">
-              <span class="meta-label">Phone Number:</span>
+              <span class="meta-label">Phone</span>
               <span class="meta-value"
-                ><a href="tel:+923001234568" class="meta-link"
+                ><a href="tel:+923184155544" class="meta-link"
                   >+92 318 4155544</a
                 ></span
               >
@@ -2981,7 +3011,7 @@
 
           <div class="contact-socials reveal-up" style="transition-delay: 0.5s">
             <a
-              href="https://wa.me/923001234567"
+              href="https://wa.me/923184155544"
               target="_blank"
               rel="noopener noreferrer"
               class="social-btn whatsapp"
@@ -3009,7 +3039,7 @@
               <span>Visit my Instagram</span>
             </a>
             <a
-              href="https://linkedin.com/in/yourhandle"
+              href="https://www.linkedin.com/in/kanwal-ansari-9a3033438/"
               target="_blank"
               rel="noopener noreferrer"
               class="social-btn linkedin"
@@ -3622,7 +3652,7 @@
           gallery: false,
           result:
             "A refined, responsive e-commerce experience ready for real-world use.",
-                   concept: false,
+          concept: false,
           liveUrl: "http://veloura-pk.great-site.net/",
           liveLabel: "Click here to view the live website ↗",
           actions: [],
@@ -3645,6 +3675,31 @@
           gallery: false,
           result:
             "A unified visual identity delivering consistent branding across every customer-facing touchpoint.",
+          concept: true,
+          actions: [],
+        },
+        canva_designs: {
+          order: 10,
+          kicker: "Graphic Design",
+          name: "Canva Designs",
+          image: "./assets/coffee-website-cannva.png",
+          fallback: "/assets/coffee-website-cannva.png",
+          overview:
+            "A selection of designs created in Canva, including layouts and visuals built around clean typography and a consistent brand look.",
+          role: "Graphic Designer",
+          challenge:
+            "Turning a brand idea into clear, eye-catching visuals that stay consistent across different formats.",
+          solution:
+            "Built each design with a focused layout, strong typography and a cohesive colour palette suited to the brand.",
+          tools: ["Canva"],
+          features: null,
+          gallery: true,
+          galleryImages: [
+            "./assets/coffee-website-cannva.png",
+            // Add your second Canva file here, e.g. "./assets/your-file-name.png",
+          ],
+          result:
+            "Polished, ready-to-use designs that present the brand clearly.",
           concept: true,
           actions: [],
         },
@@ -3873,7 +3928,7 @@
         if (project.gallery) {
           galleryBlock.style.display = "";
 
-          const galleryImages = [
+          const galleryImages = project.galleryImages || [
             "./assets/json-formatter.png",
             "./assets/text-case-convertrer.png",
             "./assets/character-counter.png",
@@ -3881,6 +3936,8 @@
             "./assets/color-picker.png",
             "./assets/regex.png",
           ];
+
+          galleryWrap.style.gridTemplateColumns = `repeat(${Math.min(galleryImages.length, 3)}, 1fr)`;
 
           galleryImages.forEach((imgSrc) => {
             const g = document.createElement("div");
